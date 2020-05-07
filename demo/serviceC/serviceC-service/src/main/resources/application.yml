@@ -1,0 +1,13 @@
+server:
+  port: 7003
+spring:
+  application:
+    name: service
+eureka:
+  client:
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://localhost:8081/eureka
+  instance:
+    instance-id: SERVICEC
+    prefer-ip-address: true

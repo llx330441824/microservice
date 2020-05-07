@@ -1,0 +1,33 @@
+server:
+  port: 82
+spring:
+  application:
+    name: zuul
+eureka:
+  client:
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://localhost:8081/eureka
+  instance:
+    instance-id: zuul
+    prefer-ip-address: true
+zuul:
+  # 域名前缀
+  prefix: /scm
+  # 禁止通过哪个微服务名进行访问，如有多个用逗号隔开，如需全部则用"*"
+  ignored-services: service
+  routes:
+    # 需要代理的服务名。即spring.application.name
+    service:
+      # 代理的路径
+      path: /myservice/**
+      # Eureka上的application,即各个微服务中配置的instance-id
+      serviceId: service
+  # 访问超时设置
+  host:
+    socket-timeout-millis: 2000
+    connect-timeout-millis: 1000
+  # 是否开启重试
+  retryable: false
+
+

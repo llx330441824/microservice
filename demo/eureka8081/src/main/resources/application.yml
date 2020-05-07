@@ -1,0 +1,28 @@
+#服务端口号
+server:
+  port: 8081
+
+spring:
+  application:
+    # 服务的名称及在Eureka可视化界面上的服务名
+    name: eureka8081
+eureka:
+  instance:
+    # 当鼠标移到服务列表时，是否在左下角显示该服务的IP
+    prefer-ip-address: true
+    # 注册到Eureka的IP地址
+    hostname: 127.0.0.1
+    # Eureka客户端到Eureka服务端拉取服务列表的时间，默认是30秒
+    lease-expiration-duration-in-seconds: 10
+  client:
+    # 是否将此服务注册到注册中心上
+    register-with-eureka: false
+    # Eureka是否要去其他实例中拉取注册列表信息，单点部署的时候为false，集群部署的时候必须为true
+    fetch-registry: true
+    # Eureka的地址，如果有集群，IP直接英文逗号分隔
+    serviceUrl:
+       defaultZone: http://localhost:8081/eureka
+
+
+
+
